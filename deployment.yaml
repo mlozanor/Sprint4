@@ -3,7 +3,7 @@ resources:
   - name: msd-api-gateway
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceRanges: 
@@ -14,40 +14,11 @@ resources:
       - IPProtocol: TCP
         ports: 
         - 8000
-  # FIRE WALL
-  - name: msd-api-gateway2
-    type: compute.v1.firewall
-    properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-      priority: 1000
-      direction: INGRESS
-      sourceRanges: 
-      - 0.0.0.0/0
-      targetTags:
-      - msd-api-gateway
-      allowed:
-      - IPProtocol: TCP
-        ports: 
-        - 8000
-
+  
   - name: msd-services-apps
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-      priority: 1000
-      direction: INGRESS
-      sourceTags: 
-      - msd-api-gateway
-      targetTags:
-      - msd-services-firewall
-      allowed:
-      - IPProtocol: TCP
-        ports: 
-        - 8080
-  - name: msd-services-apps2
-    type: compute.v1.firewall
-    properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceTags: 
@@ -62,7 +33,7 @@ resources:
   - name: msd-services-apps-web
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceRanges: 
@@ -73,25 +44,11 @@ resources:
       - IPProtocol: TCP
         ports: 
         - 8080
-  - name: msd-services-apps-web2
-    type: compute.v1.firewall
-    properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-      priority: 1000
-      direction: INGRESS
-      sourceRanges: 
-      - 0.0.0.0/0
-      targetTags:
-      - msd-services-firewall
-      allowed:
-      - IPProtocol: TCP
-        ports: 
-        - 8080
-
+  
   - name: msd-service-db
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceTags: 
@@ -102,25 +59,11 @@ resources:
       - IPProtocol: TCP
         ports: 
         - 5432
-  - name: msd-service-db2
-    type: compute.v1.firewall
-    properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-      priority: 1000
-      direction: INGRESS
-      sourceTags: 
-      - msd-services-firewall
-      targetTags:
-      - msd-service-db
-      allowed:
-      - IPProtocol: TCP
-        ports: 
-        - 5432
-
+  
   - name: nosqld-firewall-django
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceRanges: 
@@ -131,25 +74,11 @@ resources:
       - IPProtocol: TCP
         ports: 
         - 8080
-  - name: nosqld-firewall-django2
-    type: compute.v1.firewall
-    properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-      priority: 1000
-      direction: INGRESS
-      sourceRanges: 
-      - 0.0.0.0/0
-      targetTags:
-      - nosqld-django
-      allowed:
-      - IPProtocol: TCP
-        ports: 
-        - 8080
-
+  
   - name: nosqld-firewall-mongo
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceTags: 
@@ -160,26 +89,11 @@ resources:
       - IPProtocol: TCP
         ports: 
         - 27017
-  - name: nosqld-firewall-mongo2
-    type: compute.v1.firewall
-    properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-      priority: 1000
-      direction: INGRESS
-      sourceTags: 
-      - nosqld-django
-      targetTags:
-      - nosqld-mongo
-      allowed:
-      - IPProtocol: TCP
-        ports: 
-        - 27017
-
-  - name: msd-clientes-firewall-django
+  
   - name: msd-clientes-firewall-flask
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceRanges: 
@@ -191,12 +105,43 @@ resources:
         ports: 
         - 8080
 
+  # Para solicitudes
+  - name: firewall-django
+    type: compute.v1.firewall
+    properties:
+      network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
+      priority: 1000
+      direction: INGRESS
+      source-ranges: 
+      - 0.0.0.0/0
+      targetTags:
+      - rest-django
+      allowed:
+      - IPProtocol: TCP
+        ports: 
+        - 8080
+  - name: firewall-db-solicitudes
+    type: compute.v1.firewall
+    properties:
+      network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
+      priority: 1000
+      direction: INGRESS
+      sourceTags: 
+      - rest-django
+      targetTags:
+      - db-solicitudes
+      allowed:
+      - IPProtocol: TCP
+        ports: 
+        - 5432 
+
+
   # Productos Instance
   - name: msd-productos-ms
     type: compute.v1.instance
     properties:
       zone: us-central1-a
-      machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
+      machineType: https://www.googleapis.com/compute/v1/projects/<id proyecto>/zones/us-central1-a/machineTypes/e2-micro
       disks:
       - deviceName: boot
         type: PERSISTENT
@@ -205,7 +150,7 @@ resources:
         initializeParams:
           sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
       networkInterfaces:
-      - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      - network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
         networkIP: 10.128.0.85
         accessConfigs:
         - name: External NAT
@@ -223,59 +168,16 @@ resources:
             sudo mkdir /sprints
             cd /sprints
             sudo git clone https://github.com/ISIS2503-E404-BancoAlpes/Sprint-4.git
-            cd producto_ms
+            cd /sprints/Sprint-4/producto_ms/
             sudo pip3 install -r requirements.txt
+            echo 'MONGO_CLI="mongodb://product_user:isis2503@10.128.0.70:27017"' | sudo tee -a /etc/environment
     
-            sudo nano /etc/environment
-            MONGO_CLI="mongodb://product_user:isis2503@10.128.0.70:27017"
-  
-  
-  # Clientes app django instance
-  # Clientes app Flask instance
-  - type: compute.v1.instance
-    name: msd-clientes-instance
-    properties:
-      zone: us-central1-a
-      machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
-      disks:
-      - deviceName: boot
-        type: PERSISTENT
-        boot: true
-        autoDelete: true
-        initializeParams:
-          sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
-      networkInterfaces:
-      - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-        networkIP: 10.128.0.71
-        accessConfigs:
-        - name: External NAT
-          type: ONE_TO_ONE_NAT
-      tags:
-        items: 
-        - msd-clientes-flask
-      metadata:
-        items:
-        - key: startup-script
-          value: |
-            #!/bin/bash
-            sudo apt-get update
-            sudo apt install python3-pip -y
-            sudo mkdir /sprints
-            cd /sprints
-            sudo git clone https://github.com/ISIS2503-E404-BancoAlpes/Sprint-4.git
-            cd Sprint-4/cliente_ms
-            sudo pip3 install -r requirements.txt
-            sudo python3 manage.py makemigrations
-            sudo python3 manage.py migrate
-
-  # Mongo Database instance for documentos
-
-  # Mongo Database instance for documentos
+    # Mongo Database instance for documentos
   - type: compute.v1.instance
     name: nosqld-mongo-instance-documentos
     properties:
       zone: us-central1-a
-      machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
+      machineType: https://www.googleapis.com/compute/v1/projects/<id proyecto>/zones/us-central1-a/machineTypes/e2-micro
       disks:
       - deviceName: boot
         type: PERSISTENT
@@ -284,7 +186,7 @@ resources:
         initializeParams:
           sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-386-64
       networkInterfaces:
-      - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      - network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
         networkIP: 10.128.0.70
         accessConfigs:
         - name: External NAT
@@ -299,63 +201,70 @@ resources:
            #!/bin/bash
            sudo apt-get update
            docker run -e MONGO_INITDB_ROOT_USERNAME=product_user -e MONGO_INITDB_ROOT_PASSWORD=isis2503 -p 27017:27017 -d mongo
-
-  # Mongo Database instance for Clientes
-  - type: compute.v1.instance
-    name: nosqld-mongo-instance-clients
-    properties:
-      zone: us-central1-a
-      machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
-      disks:
-      - deviceName: boot
-        type: PERSISTENT
-        boot: true
-        autoDelete: true
-        initializeParams:
-          sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-386-64
-      networkInterfaces:
-      - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-        networkIP: 10.128.0.72
-        accessConfigs:
-        - name: External NAT
-          type: ONE_TO_ONE_NAT
-      tags:
-        items: 
-        - nosqld-mongo
-      metadata:
-        items:
-        - key: startup-script
-          value: |
-           #!/bin/bash
-           sudo apt-get update
-           docker run -e MONGO_INITDB_ROOT_USERNAME=client_user -e MONGO_INITDB_ROOT_PASSWORD=isis2503 -p 27017:27017 -d mongo
-
+          
   # Mongo Database instance for Solicitudes
-  - type: compute.v1.instance
-    name: nosqld-mongo-instance-solicitudes
-    properties:
-      zone: us-central1-a
-      machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
-      disks:
-      - deviceName: boot
-        type: PERSISTENT
-        boot: true
-        autoDelete: true
-        initializeParams:
-          sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-386-64
-      networkInterfaces:
-      - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-        networkIP: 10.128.0.22
-        accessConfigs:
-        - name: External NAT
-          type: ONE_TO_ONE_NAT
-      tags:
-        items: 
-        - nosqld-mongo
-      metadata:
-        items:
-        - key: startup-script
-          value: |
-           #!/bin/bash
-           sudo apt-get update
-           docker run -e MONGO_INITDB_ROOT_USERNAME=client_user -e MONGO_INITDB_ROOT_PASSWORD=isis2503 -p 27017:27017 -d mongo
+  #- type: compute.v1.instance
+  #  name: nosqld-mongo-instance-requests
+  #  properties:
+  #    zone: us-central1-a
+  #    machineType: https://www.googleapis.com/compute/v1/projects/<id proyecto>/zones/us-central1-a/machineTypes/e2-micro
+  #    disks:
+  #    - deviceName: boot
+  #      type: PERSISTENT
+  #      boot: true
+  #      autoDelete: true
+  #      initializeParams:
+  #        sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-386-64
+  #    networkInterfaces:
+  #    - network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
+  #      networkIP: 10.128.0.22
+  #      accessConfigs:
+  #      - name: External NAT
+  #        type: ONE_TO_ONE_NAT
+  #    tags:
+  #      items: 
+  #      - nosqld-mongo
+  #    metadata:
+  #      items:
+  #      - key: startup-script
+  #        value: |
+  #         #!/bin/bash
+  #         sudo apt-get update
+  #         docker run -e MONGO_INITDB_ROOT_USERNAME=client_user -e MONGO_INITDB_ROOT_PASSWORD=monda -p 27017:27017 -d mongo
+
+  # Postgres Database solicitudes
+- type: compute.v1.instance
+  name: solicitudes-db-instance
+  properties:
+    zone: us-central1-a
+    machineType: https://www.googleapis.com/compute/v1/projects/<id proyecto>/zones/us-central1-a/machineTypes/e2-micro
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/<id proyecto>/global/networks/default
+      networkIP: 10.128.0.52
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+    tags:
+      items: 
+      - db-solicitudes
+    metadata:
+      items:
+      - key: startup-script
+        value: |
+          #!/bin/bash
+          sudo apt-get update
+          sudo apt-get install -y postgresql postgresql-contrib
+          sudo -u postgres psql -c "CREATE USER banco_user WITH PASSWORD 'isis2503';"
+          sudo -u postgres createdb -O banco_user banco_db
+          echo "host all all 0.0.0.0/0 trust" | sudo tee -a /etc/postgresql/12/main/pg_hba.conf
+          echo "listen_addresses='*'" | sudo tee -a /etc/postgresql/12/main/postgresql.conf
+          echo "max_connections=2000" | sudo tee -a /etc/postgresql/12/main/postgresql.conf
+          sudo service postgresql restart
+  
