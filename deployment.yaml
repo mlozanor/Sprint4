@@ -95,7 +95,7 @@ resources:
           -p 8000:8000 kong/kong-gateway
 
 # Database instances
-- name: msd-variables-db
+- name: msd-documentos-db
   type: compute.v1.instance
   properties:
     zone: us-central1-a
@@ -123,7 +123,7 @@ resources:
           #!/bin/bash
           docker run --restart=always -d -e POSTGRES_USER=variables_user -e POSTGRES_DB=variables_db -e POSTGRES_PASSWORD=isis2503 -p 5432:5432 --name variables-db postgres
 
-- name: msd-measurements-db
+- name: msd-solicitudes-db
   type: compute.v1.instance
   properties:
     zone: us-central1-a
@@ -153,7 +153,7 @@ resources:
 
 
 # Service instances
-- name: msd-variables-ms
+- name: msd-documentos-ms
   type: compute.v1.instance
   properties:
     zone: us-central1-a
@@ -184,7 +184,7 @@ resources:
           sudo git clone https://github.com/ISIS2503/ISIS2503-Microservices-AppDjango.git
           cd ISIS2503-Microservices-AppDjango/variables
 
-- name: msd-measurements-ms
+- name: msd-solicitudes-ms
   type: compute.v1.instance
   properties:
     zone: us-central1-a
