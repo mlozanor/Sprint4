@@ -3,7 +3,7 @@ resources:
   - name: msd-api-gateway
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceRanges: 
@@ -18,7 +18,7 @@ resources:
   - name: msd-services-apps
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceTags: 
@@ -33,7 +33,7 @@ resources:
   - name: msd-services-apps-web
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceRanges: 
@@ -48,7 +48,7 @@ resources:
   - name: msd-service-db
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceTags: 
@@ -63,7 +63,7 @@ resources:
   - name: nosqld-firewall-django
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceRanges: 
@@ -78,7 +78,7 @@ resources:
   - name: nosqld-firewall-mongo
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceTags: 
@@ -93,7 +93,7 @@ resources:
   - name: msd-clientes-firewall-flask
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceRanges: 
@@ -109,7 +109,7 @@ resources:
   - name: firewall-django
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       source-ranges: 
@@ -123,7 +123,7 @@ resources:
   - name: firewall-db-solicitudes
     type: compute.v1.firewall
     properties:
-      network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
       priority: 1000
       direction: INGRESS
       sourceTags: 
@@ -141,7 +141,7 @@ resources:
     type: compute.v1.instance
     properties:
       zone: us-central1-a
-      machineType: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/zones/us-central1-a/machineTypes/e2-micro
+      machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
       disks:
       - deviceName: boot
         type: PERSISTENT
@@ -150,7 +150,7 @@ resources:
         initializeParams:
           sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
       networkInterfaces:
-      - network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
         networkIP: 10.128.0.85
         accessConfigs:
         - name: External NAT
@@ -177,7 +177,7 @@ resources:
     name: nosqld-mongo-instance-products
     properties:
       zone: us-central1-a
-      machineType: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/zones/us-central1-a/machineTypes/e2-micro
+      machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
       disks:
       - deviceName: boot
         type: PERSISTENT
@@ -186,7 +186,7 @@ resources:
         initializeParams:
           sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-386-64
       networkInterfaces:
-      - network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
         networkIP: 10.128.0.70
         accessConfigs:
         - name: External NAT
@@ -207,7 +207,7 @@ resources:
     name: nosqld-mongo-instance-requests
     properties:
       zone: us-central1-a
-      machineType: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/zones/us-central1-a/machineTypes/e2-micro
+      machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
       disks:
       - deviceName: boot
         type: PERSISTENT
@@ -216,7 +216,7 @@ resources:
         initializeParams:
           sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-386-64
       networkInterfaces:
-      - network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+      - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
         networkIP: 10.128.0.22
         accessConfigs:
         - name: External NAT
@@ -237,7 +237,7 @@ resources:
   name: solicitudes-db-instance
   properties:
     zone: us-central1-a
-    machineType: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/zones/us-central1-a/machineTypes/e2-micro
+    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -246,7 +246,7 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/sprint2-error404-isis2503/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
       networkIP: 10.128.0.52
       accessConfigs:
       - name: External NAT
