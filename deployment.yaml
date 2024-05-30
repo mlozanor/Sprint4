@@ -268,11 +268,11 @@ resources:
             sudo python3 manage.py makemigrations
             sudo python3 manage.py migrate
 
-  # Mongo Database instance for Products
+  # Mongo Database instance for documentos
 
-  # Mongo Database instance for Products
+  # Mongo Database instance for documentos
   - type: compute.v1.instance
-    name: nosqld-mongo-instance-products
+    name: nosqld-mongo-instance-documentos
     properties:
       zone: us-central1-a
       machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
@@ -332,7 +332,7 @@ resources:
 
   # Mongo Database instance for Solicitudes
   - type: compute.v1.instance
-    name: nosqld-mongo-instance-requests
+    name: nosqld-mongo-instance-solicitudes
     properties:
       zone: us-central1-a
       machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
